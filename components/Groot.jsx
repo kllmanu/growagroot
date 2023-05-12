@@ -1,3 +1,14 @@
 export default function Groot() {
-  return <h1>Hello Groot!</h1>;
+  return (
+  <Image
+    src="/vercel.svg"
+    alt="Vercel Logo"
+    className="dark:invert"
+    width={100}
+    height={24}
+    priority
+  />
+  );
 }
+
+import Image from "next/image";
