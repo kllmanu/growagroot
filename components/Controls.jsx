@@ -6,24 +6,24 @@ export default function Controls() {
   const { water, play, pet } = useGrootStore();
   
   return (
-    <div className="w-full flex flex-row justify-around items-center">
+    <div className="w-full flex flex-row justify-center items-center">
       <button 
         onClick={water}
-        className="bg-sky-50 hover:bg-sky-100 text-black font-bold py-2 px-4 rounded">
+        className="bg-[#43E0FF] mr-2 text-black font-bold py-2 px-4 rounded-[12px]">
         <Image
-          src="/waterdrop.svg"
+          src="/waterdrop-icon.svg"
           alt="Water"
-          className="h-[50px]"
+          className="h-[50px] filter fill-white"
           width={50}
           height={50}
           priority
         />
       </button>
       <button 
-        onClick={play}
-        className="bg-sky-50 hover:bg-sky-100 text-black font-bold py-2 px-4 rounded">
+        onClick={pet}
+        className="bg-[#FF0080] ml-2 text-black font-bold py-2 px-4 rounded-[12px]">
         <Image
-          src="/dice-solid.svg"
+          src="/play.svg"
           alt="Play"
           className="h-[50px]"
           width={50}
@@ -31,7 +31,7 @@ export default function Controls() {
           priority
         />
       </button>
-      <button 
+      {/* <button 
         onClick={pet}
         className="bg-sky-50 hover:bg-sky-100 text-black font-bold py-2 px-4 rounded">
         <Image
@@ -42,7 +42,7 @@ export default function Controls() {
           height={50}
           priority
         />
-      </button>
+      </button> */}
     </div>
   );
 }

@@ -1,11 +1,11 @@
 /* eslint-disable */
 
-const IdleGroot = () => (
+const Hearts = () => (
     <object
       type="image/svg+xml"
-      data="/groot-idle.svg"
+      data="/heart-4x.svg"
       className="absolute w-full"
     ></object>
 );
 
-export default IdleGroot;
+export default Hearts;
