@@ -1,8 +1,16 @@
-import { create } from 'zustand'
+import { create } from "zustand";
+import { persist } from "zustand/middleware";
 
 // start here: https://docs.pmnd.rs/zustand/getting-started/introduction
-const useStore = create((set) => ({
-  bears: 0,
-  increasePopulation: () => set((state) => ({ bears: state.bears + 1 })),
-  removeAllBears: () => set({ bears: 0 }),
-}))
+export const useStore = create(
+  persist(
+    (set, get) => ({
+      fishes: 0,
+      addAFish: () => set({ fishes: get().fishes + 1 }),
+    }),
+    {
+      name: "growagroot", // unique name
+      getStorage: () => localStorage, // (optional) by default the 'localStorage' is used
+    }
+  )
+);
