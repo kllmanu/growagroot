@@ -9,6 +9,7 @@ import {
 const randomName = uniqueNamesGenerator({
   dictionaries: [adjectives, colors],
   style: "capital",
+  separator: "",
   length: 2,
 });
 
