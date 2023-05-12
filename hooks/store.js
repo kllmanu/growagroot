@@ -25,7 +25,7 @@ export const useGrootStore = create(
       status: "idle",
       water: () => {
         set({
-          hydration: get().water + 1,
+          hydration: get().hydration + 1,
           status: "watering",
         }),
           setTimeout(() => {
