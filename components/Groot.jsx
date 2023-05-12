@@ -1,14 +1,10 @@
+
 export default function Groot() {
   return (
-  <Image
-    src="/vercel.svg"
-    alt="Vercel Logo"
-    className="dark:invert"
-    width={100}
-    height={24}
-    priority
-  />
+    <div className="text-black flex h-full w-full bg-white mt-6 mb-6 justify-center items-center">
+       <IdleGroot />
+    </div>
   );
 }
 
-import Image from "next/image";
+import IdleGroot from "./animations/IdleGroot";

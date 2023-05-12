@@ -22,21 +22,26 @@ export const useGrootStore = create(
       hydration: 10,
       happiness: 10,
       saturated: 10,
+      status: "idle",
       water: () =>
         set({
           hydration: get().water + 1,
+          status: "watering",
         }),
       play: () =>
         set({
           happiness: get().happiness + 1,
+          status: "playing",
         }),
       pet: () =>
         set({
           happiness: get().happiness + 1,
+          status: "petting",
         }),
       eat: () =>
         set({
           saturated: get().saturated + 1,
+          status: "petting",
         }),
     }),
     {
