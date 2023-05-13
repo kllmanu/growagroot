@@ -13,18 +13,18 @@ export default function StatusBar() {
   }, [hydration, happiness]);
 
   return (
-    <div className="flex flex-col justify-center items-center w-full">
+    <div className="flex flex-col justify-center items-center w-full gap-y-4 uppercase tracking-[.25em] text-xs">
         Hydration
-      <div className="w-full bg-white rounded-[12px]">
+      <div className="w-full bg-white rounded-[12px] border-2 mb-4">
         <div
-          className="h-6 bg-[#43E0FF] rounded-[12px]"
+          className="h-4 bg-[#43E0FF] rounded-[12px]"
           style={{ width: `${hydrationWidth ? hydrationWidth : 0}%` }}
         ></div>
       </div>
       Happiness
-      <div className="w-full bg-white rounded-[12px]">
+      <div className="w-full bg-white rounded-[12px] border-2">
         <div
-          className="h-6 bg-[#FF0080] rounded-[12px]"
+          className="h-4 bg-[#FF0080] rounded-[12px]"
           style={{ width: `${happinessWidth ? happinessWidth : 0}%` }}
         ></div>
       </div>
