@@ -13,7 +13,7 @@ export default function StatusBar() {
   }, [hydration, happiness]);
 
   return (
-    <div className="flex flex-col justify-center items-center w-full gap-y-4 uppercase tracking-[.25em] text-xs">
+    <div className="flex text-white flex-col justify-center items-center w-full gap-y-4 uppercase tracking-[.25em] text-xs">
         Hydration
       <div className="w-full bg-white rounded-[12px] border-2 mb-4">
         <div
