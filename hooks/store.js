@@ -17,41 +17,75 @@ const randomName = uniqueNamesGenerator({
 export const useGrootStore = create(
   persist(
     (set, get) => ({
-      name: randomName + "Groot",
+      name: "Groot",
       created: new Date(),
       hydration: 10,
       happiness: 10,
       saturated: 10,
       status: "idle",
+      animationCount: 0,
       water: () => {
-        set({
-          hydration: get().hydration + 1,
+        set((state) => ({
+          ...state,
+          hydration: state.hydration >= 100 ? state.hydration : state.hydration + 1,
+          animationCount: state.animationCount + 1,
           status: "watering",
-        }),
-          setTimeout(() => {
-            set({ status: "idle" });
-          }, 2000);
-      },
-      play: () =>
-        set({
-          happiness: get().happiness + 1,
-          status: "playing",
-        }),
-      pet: () => {
-        set({
-          happiness: get().happiness + 1,
-          status: "petting",
-        });
-
+        }));
         setTimeout(() => {
-          set({ status: "idle" });
+          set((state) => ({
+            ...state,
+            animationCount: state.animationCount - 1,
+            status: state.animationCount === 0 ? "idle" : state.status,
+          }));
         }, 2000);
       },
-      eat: () =>
-        set({
-          saturated: get().saturated + 1,
-          status: "eating",
-        }),
+      play: () => {
+        set((state) => ({
+          ...state,
+          happiness: state.happiness >= 100 ? state.happiness : state.happiness + 1,
+          animationCount: state.animationCount + 1,
+          status: "playing",
+        }));
+        setTimeout(() => {
+          set((state) => ({
+            ...state,
+            animationCount: state.animationCount - 1,
+            status: state.animationCount === 0 ? "idle" : state.status,
+          }));
+        }, 2000);
+      },
+      reset: () => {
+        set((state) => ({
+          ...state,
+          animationCount: 0,
+        }));
+      },
+      startHydrationTimer: () => {
+        const timerId = setInterval(() => {
+          set((state) => ({
+            ...state,
+            hydration: Math.max(0, state.hydration - 1), // decrease hydration level by 1
+          }));
+        }, 1000); // 1 minutes interval
+
+        set((state) => ({
+          ...state,
+          timerId, // store the timerId in the state
+        }));
+      },
+      startHappinessTimer: () => {
+        const happinessTimerId = setInterval(() => {
+          set((state) => ({
+            ...state,
+            happiness: Math.max(0, state.happiness - 1), // decrease hydration level by 1
+          }));
+        }, 1000); // 3 minutes interval
+
+        set((state) => ({
+          ...state,
+          happinessTimerId, // store the timerId in the state
+        }));
+      },
     }),
     {
       name: "growagroot",
