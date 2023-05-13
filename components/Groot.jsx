@@ -7,9 +7,10 @@ import { useGrootStore } from "../hooks/store.js";
 import HappyGroot from "./animations/HappyGroot";
 import SadGroot from "./animations/SadGroot";
 import { useEffect } from "react";
+import DeadGroot from "./animations/DeadGroot";
 
 export default function Groot() {
-  const { status, animationCount, happiness } = useGrootStore();
+  const { status, animationCount, happiness, hydration } = useGrootStore();
   const { startHydrationTimer, startHappinessTimer } = useGrootStore();
 
   useEffect(() => {
@@ -47,7 +48,7 @@ export default function Groot() {
       }}
       className="text-black flex bg-white mt-6 mb-6 justify-center items-center w-full h-[300px]"
     >
-      { happiness > 50 ? <HappyGroot /> : happiness < 30 ? <SadGroot /> : <IdleGroot /> }
+      { hydration > 0 && happiness > 50 ? <HappyGroot /> : hydration > 0 && happiness < 30 ? <SadGroot /> : hydration > 0 ? <IdleGroot /> : <DeadGroot /> }
       {renderAnimations()}
     </div>
   );

@@ -3,7 +3,7 @@
 const IdleGroot = () => (
     <object
       type="image/svg+xml"
-      data="/groot-idle.svg"
+      data="/idle-groot-improved.svg"
       className="absolute w-full"
     ></object>
 );

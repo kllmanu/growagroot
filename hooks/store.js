@@ -27,7 +27,7 @@ export const useGrootStore = create(
       water: () => {
         set((state) => ({
           ...state,
-          hydration: state.hydration >= 100 ? state.hydration : state.hydration + 1,
+          hydration: state.hydration >= 100 ? state.hydration : state.hydration + 10,
           animationCount: state.animationCount + 1,
           status: "watering",
         }));
@@ -42,7 +42,7 @@ export const useGrootStore = create(
       play: () => {
         set((state) => ({
           ...state,
-          happiness: state.happiness >= 100 ? state.happiness : state.happiness + 1,
+          happiness: state.happiness >= 100 ? state.happiness : state.happiness + 10,
           animationCount: state.animationCount + 1,
           status: "playing",
         }));

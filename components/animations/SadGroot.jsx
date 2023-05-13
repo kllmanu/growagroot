@@ -3,7 +3,7 @@
 const SadGroot = () => (
     <object
       type="image/svg+xml"
-      data="/grow-a-groot_logo-defaultsad.svg"
+      data="/sad-groot.svg"
       className="absolute w-full"
     ></object>
 );
