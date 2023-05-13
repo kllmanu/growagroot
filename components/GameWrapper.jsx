@@ -57,7 +57,7 @@ export default function GameWrapper() {
           priority
         />
       </div>
-      <div className="flex w-full h-[100vh] flex-col justify-between items-center px-8 py-8">
+      <div className="flex w-full text-white h-[100vh] flex-col justify-between items-center px-8 py-8">
         <StatusBar/>
         <Groot />
         <h2 className="font-thin text-3xl">{name}</h2>
