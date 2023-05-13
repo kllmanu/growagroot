@@ -9,24 +9,33 @@ import StatusBar from "./StatusBar";
 export default function GameWrapper() {
   const { name, created, hydration } = useGrootStore();
   const [aliveTime, setAliveTime] = useState("");
+  const [intervalId, setIntervalId] = useState(null);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      const currentTime = new Date();
-      const createdTime = new Date(created);
-      const timeDiff = Math.floor((currentTime - createdTime) / 1000); // Calculate the time difference in seconds
-      const minutes = Math.floor(timeDiff / 60);
-      const seconds = timeDiff % 60;
-      console.log(currentTime, created);
-      if(hydration > 0) {
+    if (hydration > 0) {
+      const id = setInterval(() => {
+        const currentTime = new Date();
+        const createdTime = new Date(created);
+        const timeDiff = Math.floor((currentTime - createdTime) / 1000); // Calculate the time difference in seconds
+        const minutes = Math.floor(timeDiff / 60);
+        const seconds = timeDiff % 60;
         setAliveTime(`${minutes}:${seconds.toString().padStart(2, "0")}`);
-      }
-    }, 1000); // Update the alive time every second
+      }, 1000); // Update the alive time every second
+      setIntervalId(id);
+    }
 
     return () => {
-      clearInterval(interval);
+      if (intervalId) {
+        clearInterval(intervalId); // Clear interval on unmount
+      }
     };
-  }, [created]);
+  }, [created, hydration]);
+
+  useEffect(() => {
+    if (hydration === 0 && intervalId) {
+      clearInterval(intervalId);
+    }
+  }, [hydration, intervalId]);
 
   return (
     <div className="flex w-full h-[100vh] flex-col justify-between items-center">
