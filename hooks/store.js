@@ -66,7 +66,7 @@ export const useGrootStore = create(
             ...state,
             hydration: Math.max(0, state.hydration - 1), // decrease hydration level by 1
           }));
-        }, 1000); // 1 minutes interval
+        }, 60000); // 1 minutes interval
         set((state) => ({
           ...state,
           timerId, // store the timerId in the state
@@ -78,7 +78,7 @@ export const useGrootStore = create(
             ...state,
             happiness: Math.max(0, state.happiness - 1), // decrease hydration level by 1
           }));
-        }, 1000); // 3 minutes interval
+        }, 120000); // 3 minutes interval
         set((state) => ({
           ...state,
           happinessTimerId, // store the timerId in the state
